@@ -1,0 +1,13 @@
+---
+title: "Class-2022-06-20"
+author: "Jackson Roe"
+date: '2022-06-21'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(billboard)
+```
+
