@@ -6,8 +6,46 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(billboard)
 ```
 
+```{r}
+x <- wiki_hot_100s |> 
+  as_tibble()|>
+  mutate(year=as.numeric(year))
+  #mutate(no=as.numeric(no))
+```
+
+```{r}
+temp <- x |>
+  group_by(artist)|>
+  summarize(appearances=n())|>
+  arrange(desc(appearances))
+  
+```
+```{r}
+temp2 <- x|>
+  group_by(artist)|>
+  summarize(appearances = n())|>
+  filter(appearances==1)
+```
+```{r}
+temp3 <- x|>
+  group_by(year)|>
+  summarize(appearances = n())|>
+  distinct()
+  
+```
+
+
+Which artist appears the most?
+
+`r temp$artist[1]` appears the most
+
+How many artists appear once?
+
+There are `r nrow(temp2)`
+
+Which year features the most distinct artist?
